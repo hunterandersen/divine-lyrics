@@ -4,7 +4,8 @@
 - Home
 - Genre selection page
     - Game difficulty selection
-- Current Song Guess
+- Gameplay Round
+    - Current Song Guess
 - End Round Recap
 - User score/highlight
 

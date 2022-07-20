@@ -1,17 +1,22 @@
 import { APIService } from "../shared/API.service";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./style.css";
 import CuratedSongsForm from "./CuratedSongsForm";
 
-export default function ListCurator() {
+export default function RoundCurator({ updateSongList }) {
   const [songList, setSongList] = useState(null);
+  const [validSongList, setValidSongList] = useState(false);
+  const navigate = useNavigate();
 
   async function getCuratedList(artist, name) {
     let songs = await APIService.getSongList(artist, name);
      if (songs && songs.mus && songs.mus[0].related) {
+      setValidSongList(true);
       console.log(songs);
       setSongList(songs);
     } else {
+      setValidSongList(false);
       console.log(songs);
       setSongList(null);
     }
@@ -20,6 +25,11 @@ export default function ListCurator() {
   function handleClick(artist, name) {
     console.log("Button clicked");
     getCuratedList(artist, name);
+  }
+
+  function playRound(){
+    updateSongList(songList);
+    navigate("/game/play");
   }
 
   let resBuilder = <></>;
@@ -49,6 +59,9 @@ export default function ListCurator() {
           : "Related Songs List"}
       </h2>
       {resBuilder}
+      {validSongList? <button className="play-round-button" onClick={playRound}>
+        Play Round
+      </button> : <></>}
     </div>
   );
 

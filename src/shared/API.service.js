@@ -5,14 +5,14 @@ export class APIService {
 
   /**
    *
-   * @param {Artist's name} artist Ex:Queen, Metallica, U2
-   * @param {Song Name} song Ex:Bohemian Rhapsody, One, One
+   * @param {string} artist Ex: Queen, Metallica, U2
+   * @param {string} song Ex: Bohemian Rhapsody, One, One
    * @returns Object>art+mus[]>related AKA an object that holds an array of related songs
    * Will not return lyrics for the original nor any of the related songs
    */
   static async getSongList(artist, song) {
     if (!artist || !song) return null;
-    let searchParams = `${Constants.VL_SEARCH_ENDPOINT}art=${artist}&mus=${song}&nolyrics=1&${Constants.VL_RELATED_SONGS}&${Constants.VL_API_KEY}`;
+    let searchParams = `${Constants.VL_SEARCH_ENDPOINT}art=${artist}&mus=${song}&nolyrics=1&${Constants.VL_RELATED_SONGS}&${process.env.REACT_APP_PUBLIC_KEY}`;
     console.log("Fetching, ", `${Constants.VL_BASE_URL}${searchParams}`);
     return fetch(`${Constants.VL_BASE_URL}${searchParams}`, {
       signal: this.controller.signal,

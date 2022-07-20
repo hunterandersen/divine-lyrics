@@ -12,6 +12,15 @@
     margin:5px;
 }
 
+.play-round-link{
+    margin:5px;
+    font-size: 60px;
+    color:inherit;
+    text-decoration: none;
+    border-radius: 10px;
+    border: 2px solid black;
+}
+
 h2{
     text-align: center;
 }
