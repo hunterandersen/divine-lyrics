@@ -1,0 +1,17 @@
+*{
+    box-sizing: border-box;
+    /* margin:5px; */
+}
+
+.curation-form{
+    display:flex;
+    justify-content: center;
+}
+
+.curation-form>*{
+    margin:5px;
+}
+
+h2{
+    text-align: center;
+}
