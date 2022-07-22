@@ -16,6 +16,7 @@ export default function GameLoop() {
           if (!lyricsData.some((song)=>{
             return song.id === relSong.mus.id;
           })) {
+            //If the related song isn't already in my list of songs, then add it
             return {
               id: relSong.mus.id,
               songName: relSong.mus.name,
@@ -25,7 +26,9 @@ export default function GameLoop() {
             return null;
           }
         });
-      } else {
+      }
+      //If the list of songs is empty, then I don't need to check anything. Just add all the related songs to the list
+      else {
         additionalSongs = songList.mus[0].related.map((relSong) => {
           return {
             id: relSong.mus.id,
@@ -88,7 +91,7 @@ export default function GameLoop() {
   return (
     <div>
       <h1>DivineLyrics</h1>
-      {lyricsData ? <span>{`${lyricsData.length}${lyricsData[0]}`}</span> : <span>GameLoop does not have lyrics data</span>}
+      {/* {lyricsData ? <span>{`${lyricsData.length}${lyricsData[0]}`}</span> : <span>GameLoop does not have lyrics data</span>} */}
       <Outlet
         context={{
           songsInfo: songList,

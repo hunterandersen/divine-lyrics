@@ -19,12 +19,12 @@ export default function LyricsBlock({songData}) {
   }
 
   return (
-    <div>
-      <ol>
+    <div className="lyrics-container">
+      <ul className="lyrics-ul">
         {lines.map((line, index)=>{
-          return <li key={index}>{line}</li>
+          return <li className="lyrics-line" key={index}>{line}</li>
         })}
-      </ol>
+      </ul>
     </div>
   )
 }
