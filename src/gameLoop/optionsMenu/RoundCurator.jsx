@@ -1,4 +1,4 @@
-import { APIService } from "../shared/API.service";
+import { APIService } from "../../shared/API.service";
 import { useState } from "react";
 import { useNavigate, useOutletContext } from "react-router-dom";
 import "./style.css";
@@ -7,7 +7,6 @@ import CuratedSongsForm from "./CuratedSongsForm";
 export default function RoundCurator() {
   const [songList, setSongList] = useState(null);
   const [validSongList, setValidSongList] = useState(false);
-  const {testVal} = useOutletContext();
   const {updateSongList} = useOutletContext();
   const navigate = useNavigate();
 
@@ -31,7 +30,6 @@ export default function RoundCurator() {
   }
 
   function playRound(){
-    //updateSongList(songList);
     navigate("/game/round");
   }
 
@@ -61,7 +59,6 @@ export default function RoundCurator() {
         {songList? `Songs related to ${songList.mus[0].name} by: ${songList.art.name}`
           : "Related Songs List"}
       </h2>
-      <p>{`testVal: ${testVal}`}</p>
       {resBuilder}
       {validSongList? <button className="play-round-button" onClick={playRound}>
         Play Round

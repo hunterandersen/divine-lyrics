@@ -13,12 +13,9 @@ import React from 'react'
 
 export default function LyricsBlock({songData}) {
 
-  console.log(songData);
-  console.log(songData.id, songData.songName);
   let lines = [""];
   if (songData && songData.lyrics){
     lines = songData.lyrics.split('\n');
-
   }
 
   return (

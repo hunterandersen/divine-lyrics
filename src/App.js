@@ -1,7 +1,7 @@
 import "./App.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
-import RoundCurator from "./optionsMenu/RoundCurator";
-import GameRound from "./gamePlay/GameRound";
+import RoundCurator from "./gameLoop/optionsMenu/RoundCurator";
+import GameRound from "./gameLoop/gamePlay/GameRound";
 import GameLoop from "./gameLoop/GameLoop";
 
 function App() {
@@ -28,7 +28,7 @@ export default App;
 
 /**
  * Option 1:
- *    Raise state up to App level so that both components can access it
+ *    Raise state up one level so that both components can access it
  * 
  * Option 1.5:
  *    Use an outlet
@@ -38,5 +38,5 @@ export default App;
  * 
  * Option 3:
  *    Link from one to the other, and pass the data as a query param
- *    I don't like this because it makes cheating much easier
+ *    I don't like this because it exposes information to the user that I don't want exposed
  */

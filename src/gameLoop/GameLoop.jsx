@@ -37,14 +37,14 @@ export default function GameLoop() {
       //Fetch the new songs' lyrics
       const newLyrics = [];
       //Batch all the fetch requests
-      const lyricsRequests = [];
+      const lyricReqPromises = [];
       additionalSongs.forEach((song)=>{
         if (song && song.id){
-          lyricsRequests.push(APIService.getLyrics(song.id));
+          lyricReqPromises.push(APIService.getLyrics(song.id));
         }
       });
       //Wait for all the fetch requests to resolve
-      Promise.all(lyricsRequests).then((allLyricsData)=>{
+      Promise.all(lyricReqPromises).then((allLyricsData)=>{
         console.log(allLyricsData);
         //Handle the result of all the fetch requests' data.
         if (allLyricsData){
@@ -77,26 +77,20 @@ export default function GameLoop() {
 
   //Find any new songs and add them to the list
   useEffect(() => {
-    console.log("useEffect in GameLoop");
     fetchTheLyrics();
   }, [songList]);
 
-  useEffect(()=>{
-    console.log(lyricsData);
-  } , [lyricsData]);
-
   function updateList(data) {
-    console.log("Updating song list", data);
+    console.log("Updating song list");
     setSongList(data);
   }
 
   return (
     <div>
-      <h1>Game Loop Title</h1>
-      {lyricsData ? <span>{`${lyricsData.length}${lyricsData[0]}`}</span> : <span>Currently No Lyrics Data</span>}
+      <h1>DivineLyrics</h1>
+      {lyricsData ? <span>{`${lyricsData.length}${lyricsData[0]}`}</span> : <span>GameLoop does not have lyrics data</span>}
       <Outlet
         context={{
-          testVal: "Balogna",
           songsInfo: songList,
           lyricsData: lyricsData,
           updateSongList: updateList,
