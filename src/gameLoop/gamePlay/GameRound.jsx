@@ -21,7 +21,7 @@ export default function GameRound() {
     );
     if (
       //replace(RegExp('  +', '\g'), ' ') to trim down to single spaces
-      guess.replace(RegExp(' ', '\g'), '').toLowerCase() == lyricsData[questionIndex].songName.replace(RegExp(' ', '\g'), '').toLowerCase()
+      guess.replace(RegExp(' ', 'g'), '').toLowerCase() == lyricsData[questionIndex].songName.replace(RegExp(' ', 'g'), '').toLowerCase()
     ) {
       correctCount.current++;
     }
