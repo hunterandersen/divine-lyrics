@@ -8,9 +8,9 @@ export default function GameRound() {
   const [questionIndex, setQuestionIndex] = useState(0);
   const [guess, setGuess] = useState("");
   let correctCount = useRef(0);
-  //const {lyricsData} = useOutletContext();
+  const {lyricsData} = useOutletContext();
   //THIS IS FOR TESTING SO THAT I DON'T HAVE TO KEEP MAKING API CALLS
-  const lyricsData = TEST_LYRICS_DATA_TEN;
+  //const lyricsData = TEST_LYRICS_DATA_TEN;
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -37,15 +37,16 @@ export default function GameRound() {
           <LyricsBlock songData={lyricsData[questionIndex]} />
           <span>{`CorrectCount: ${correctCount.current}`}</span>
           <form onSubmit={(e) => handleSubmit(e)}>
-            <label htmlFor="guessInput">Guess Song Name: </label>
+            <label className="input-label" htmlFor="guessInput">Guess Song Name: </label>
             <input
+              className="input-field"
               type="text"
               name="guessInput"
               id="guessInput"
               value={guess}
               onChange={(e) => setGuess(e.target.value)}
             />
-            <button type="submit">Enter</button>
+            <button className="input-button" type="submit">Enter</button>
           </form>
         </div>
       ) : (

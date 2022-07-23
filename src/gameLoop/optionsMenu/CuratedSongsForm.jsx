@@ -8,21 +8,24 @@ export default function CuratedSongsForm({ handleClick }) {
   return (
     <div>
       <form className="curation-form">
-        <label htmlFor="artist">Artist:</label>
+        <label className="input-label" htmlFor="artist">Artist:</label>
         <input
+          className="input-field"
           type="text"
           name="artist"
           id="artist"
           onChange={(e) => setArtist(e.target.value)}
         />
-        <label htmlFor="songName">Song:</label>
+        <label className="input-label" htmlFor="songName">Song:</label>
         <input
+          className="input-field"
           type="text"
           name="songName"
           id="songName"
           onChange={(e) => setSongName(e.target.value)}
         />
         <button
+          className="input-button"
           type="submit"
           onClick={(e) => {
             e.preventDefault();

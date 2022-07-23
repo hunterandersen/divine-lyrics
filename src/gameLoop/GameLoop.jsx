@@ -90,7 +90,7 @@ export default function GameLoop() {
 
   return (
     <div>
-      <h1>DivineLyrics</h1>
+      <h1 className="title-main">DivineLyrics</h1>
       {/* {lyricsData ? <span>{`${lyricsData.length}${lyricsData[0]}`}</span> : <span>GameLoop does not have lyrics data</span>} */}
       <Outlet
         context={{
