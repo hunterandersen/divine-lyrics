@@ -2,11 +2,15 @@
 *powered by Vagalume API*
 ## Frontend Views
 - [ ] Home
+    - maybe a "quick start" section that has songs related to a previous round for that user
+        - or just common/popular songs 
 - [x] Genre selection page
     - [ ] Game difficulty selection
 - [x] Gameplay Round
     - [x] Current Song Guess
 - [ ] End Round Recap
+    - Quick play again
+    - Main Menu button
 - [ ] User score/highlight
 
 ## API Requests
