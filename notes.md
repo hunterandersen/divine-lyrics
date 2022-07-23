@@ -8,9 +8,9 @@
     - [ ] Game difficulty selection
 - [x] Gameplay Round
     - [x] Current Song Guess
-- [ ] End Round Recap
-    - Quick play again
-    - Main Menu button
+    - [ ] End Round Recap Modal
+        - Quick play again
+        - Main Menu button
 - [ ] User score/highlight
 
 ## API Requests
