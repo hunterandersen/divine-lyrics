@@ -22,25 +22,19 @@
     text-shadow: none;
 }
 
-.input-button{
+.button{
+    margin: 5px;
     font-size: 1.2rem;
-}
-.input-button:hover{
     cursor: pointer;
-    transform: scale(.95);
-}
-
-.play-round-button{
-    margin:5px;
-    font-size: 1.2rem;
     color:inherit;
+    transform: scale(.95);
     text-decoration: none;
     border-radius: 10px;
     border: 2px solid black;
 }
-.play-round-button:hover{
+.button:hover{
     cursor: pointer;
-    transform: scale(.95);
+    transform: scale(.90);
 }
 
 h2{

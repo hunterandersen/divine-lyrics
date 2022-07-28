@@ -7,11 +7,9 @@ export default function GameLoop() {
   const [lyricsData, setLyricsData] = useState(null);
 
   function fetchTheLyrics(){
-    console.log(songList);
     if (songList) {
       let additionalSongs = [];
       if (lyricsData) {
-        console.log("Both arrays were true");
         additionalSongs = songList.mus[0].related.map((relSong) => {
           if (!lyricsData.some((song)=>{
             return song.id === relSong.mus.id;
@@ -48,7 +46,6 @@ export default function GameLoop() {
       });
       //Wait for all the fetch requests to resolve
       Promise.all(lyricReqPromises).then((allLyricsData)=>{
-        console.log(allLyricsData);
         //Handle the result of all the fetch requests' data.
         if (allLyricsData){
           allLyricsData.forEach((song)=>{
@@ -60,16 +57,13 @@ export default function GameLoop() {
             });
           });
           //Add the new lyrics to the pool of options
-          console.log("Updating Lyrics data");
           if (lyricsData) {
             setLyricsData((lyrics) => {
               let tempArr = [...lyrics, ...newLyrics];
-              console.log("tempArr", tempArr);
               return tempArr;
             });
           } else {
             let tempArr = [...newLyrics];
-            console.log("tempArr", tempArr);
             setLyricsData(tempArr);
           }
         }
@@ -84,7 +78,6 @@ export default function GameLoop() {
   }, [songList]);
 
   function updateList(data) {
-    console.log("Updating song list");
     setSongList(data);
   }
 

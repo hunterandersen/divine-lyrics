@@ -25,7 +25,7 @@ export default function CuratedSongsForm({ handleClick }) {
           onChange={(e) => setSongName(e.target.value)}
         />
         <button
-          className="input-button"
+          className="button"
           type="submit"
           onClick={(e) => {
             e.preventDefault();
