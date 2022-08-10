@@ -11,9 +11,9 @@ export default function GameRound() {
   const [guessResults, setGuessResults] = useState([]);
   const [isroundOver, setIsRoundOver] = useState(false);
   const [isModalHidden, setIsModalHidden] = useState(true);
-  const {lyricsData} = useOutletContext();
+  //const {lyricsData} = useOutletContext();
   //THIS IS FOR TESTING SO THAT I DON'T HAVE TO KEEP MAKING API CALLS
-  //const lyricsData = TEST_LYRICS_DATA_TEN;
+  const lyricsData = TEST_LYRICS_DATA_TEN;
 
   function handleSubmit(e) {
     console.log("handle submit");
