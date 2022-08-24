@@ -1,4 +1,4 @@
-import "./App.css";
+import "./globalStyle.css";
 import { Routes, Route, BrowserRouter } from "react-router-dom";
 import RoundCurator from "./gameLoop/optionsMenu/RoundCurator";
 import GameRound from "./gameLoop/gamePlay/GameRound";

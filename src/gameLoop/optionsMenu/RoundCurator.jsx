@@ -1,6 +1,6 @@
 import { APIService } from "../../shared/API.service";
 import { useState } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext, Link } from "react-router-dom";
 import "./style-options-menu.css";
 import CuratedSongsForm from "./CuratedSongsForm";
 
@@ -60,9 +60,7 @@ export default function RoundCurator() {
           : "Related Songs List"}
       </h2>
       {resBuilder}
-      {validSongList? <button className="button" onClick={playRound}>
-        Play Round
-      </button> : <></>}
+      {validSongList? <Link className="button" to="/game/round">Play Round</Link>: <></>}
     </div>
   );
 
