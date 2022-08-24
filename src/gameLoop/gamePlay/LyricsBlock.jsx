@@ -13,22 +13,25 @@ import React, { useEffect, useState } from "react";
 export default function LyricsBlock({ songData }) {
   const [sanitizedLyrics, setSanitizedLyrics] = useState("");
   const [sanitizedTitle, setSanitizedTitle] = useState("");
-  const [ogLyricsLines, setOgLyricsLines] = useState(
-    songData.lyrics.split("\n") || ""
-  );
-  const [displayLines, setDisplayLines] = useState([""]);
+  const [ogLyricsLines, setOgLyricsLines] = useState("");
+  const [displayLines, setDisplayLines] = useState(["Lyrics still loading"]);
 
   useEffect(() => {
     console.log(songData);
-    const regex = new RegExp("[^\\w\\s]", "g"); //Finds all non-word, non-whitespace characters
-    //console.log(songData.lyrics.match(regex));
-    setSanitizedLyrics(songData.lyrics.replace(regex, "").toLowerCase());
-    setSanitizedTitle(songData.songName.replace(regex, "").toLowerCase());
+    if (songData){
+      setOgLyricsLines(songData.lyrics.split('\n'));
+      const regex = new RegExp("[^\\w\\s]", "g"); //Finds all non-word, non-whitespace characters
+      //console.log(songData.lyrics.match(regex));
+      setSanitizedLyrics(songData.lyrics.replace(regex, "").toLowerCase());
+      setSanitizedTitle(songData.songName.replace(regex, "").toLowerCase());
+    }else{
+      setDisplayLines([""]);
+    }
   }, [songData]);
 
-  useEffect(() => {
-    setDisplayLines(sanitizedLyrics.split("\n"));
-  }, [sanitizedLyrics]);
+  // useEffect(() => {
+  //   setDisplayLines(sanitizedLyrics.split("\n"));
+  // }, [sanitizedLyrics]);
 
   //Lyrics Metrics
   /**
@@ -102,9 +105,11 @@ export default function LyricsBlock({ songData }) {
         simplicityScore += (data.count - 1) * 2;
         simplicityScore += data.hasTitle ? 3 : 0;
         simplicityScore += data.likeTitle ? 1 : 0;
-        if (simplicityScore > chosenLyrics.maxSimplicity) {
+        //track the simplest item
+        if (simplicityScore > chosenLyrics.maxSimplicity || (simplicityScore === chosenLyrics.maxSimplicity && data.tiebreaker > chosenLyrics.tiebreaker)) {
           chosenLyrics.maxSimplicity = simplicityScore;
           chosenLyrics.index = idx;
+          chosenLyrics.tiebreaker = data.tiebreaker;
         }
         data.simplicity = simplicityScore;
         return data;
